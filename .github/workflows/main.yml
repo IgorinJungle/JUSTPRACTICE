@@ -1,0 +1,22 @@
+name: MainWorkflow
+on: push
+
+jobs:
+  test_first:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get Checkouts
+        uses: actions/checkout@v4
+
+      - name: Get python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11.2"
+      - name: Get Google Browser
+        run: sudo apt-get install google-chrome-latest
+      - name: Get Requirements
+        run: pip3 install -r requirements.txt
+      - name: Run Test
+        run: pytest
+  
